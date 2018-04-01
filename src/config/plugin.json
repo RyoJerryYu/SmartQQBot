@@ -1,0 +1,10 @@
+{
+  "plugin_packages": [],
+  "plugin_on": [
+      "basic",
+      "manager",
+      "weather",
+      "hello_bot",
+      "rock_paper_scissors"
+  ]
+}

@@ -25,3 +25,11 @@ def say_hello(msg, bot):
     result = hello_word.say(msg.content)
     if result:
         bot.reply_msg(msg, result)
+
+@on_all_message(name="HelloBot[pic]")
+def pic_test(msg, bot):
+    hello_pic = HelloWorld("http://img1.ph.126.net/36HYIFu4bIhUVxWxN_HuMw==/6608245202841238387.jpg", re.compile(r"--say picture"))
+    result = hello_pic.say(msg.content)
+    if result:
+        bot.reply_msg(msg, result)
+

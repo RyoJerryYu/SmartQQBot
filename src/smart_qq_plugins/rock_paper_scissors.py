@@ -1,15 +1,16 @@
 # coding: utf-8
 import re
 import random
+import six
 from smart_qq_bot.logger import logger
 from smart_qq_bot.signals import on_all_message, on_bot_inited
 
 
 class RPS:
-    command = (re.compile(r"--rps rock"),
-               re.compile(r"--rps paper"),
-               re.compile(r"--rps scissor"),
-               re.compile("--rps magic(.*?)"))
+    command = (six.text_type(r"--rps 石头"),
+               six.text_type(r"--rps 布"),
+               six.text_type(r"--rps 剪刀"),
+               six.text_type("--rps 魔法(.*?)"))
     words = ("石头", "布", "剪刀")
     status = ("平手啦", "我赢啦", "我输啦")
 
@@ -40,8 +41,8 @@ def rock_paper_scissors_init(bot):
 @on_all_message(name="RPS[play]")
 def play_rps(msg, bot):
     if re.match("--rps(.*?)", msg.content):
-        bot_command = (r"--rps rock", r"--rps paper", r"--rps scissor")
-        bot_use = RPS(random.choice(bot_command))
+        bot_command = (r"--rps 石头", r"--rps 布", r"--rps 剪刀")
+        bot_use = RPS(six.text_type(random.choice(bot_command)))
         player_use = RPS(msg.content)
         result = bot_use.compare(player_use)
         if result:
